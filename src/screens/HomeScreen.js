@@ -10,7 +10,7 @@ const ios = Platform.OS === 'ios';
 const HomeScreen = () => {
   const [trending, setTrending] = useState([1,2,3])
   const [upcoming, setUpcoming] = useState([1,2,3])
-  // const [topRated, setTopRated] = useState([1,2,3])
+  const [topRated, setTopRated] = useState([1,2,3])
 
   return (
     <View className='flex: 1 bg-neutral-700'>
@@ -36,7 +36,10 @@ const HomeScreen = () => {
         <TrendingMovies data={trending} />
 
         {/* upcoming movie row */}
-        {/* <MovieList title='Upcoming' data={upcoming}/> */}
+        <MovieList title='Upcoming' data={upcoming}/>
+
+        {/* topRated movie row */}
+        <MovieList title='topRated' data={topRated}/>
 
       </ScrollView>
     </View>

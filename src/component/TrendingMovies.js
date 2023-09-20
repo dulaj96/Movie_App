@@ -9,8 +9,8 @@ const TrendingMovies = ({ data }) => {
 
     const navigation = useNavigation();
 
-    const handleClick = () => {
-        navigation.navigate('Movie', item);
+    const handleClick = (item) => {
+        navigation.navigate('MovieScreen', item);
     }
 
     return (
@@ -31,7 +31,7 @@ const TrendingMovies = ({ data }) => {
     )
 }
 
-const MovieCard = () => {
+const MovieCard = ({item, handleClick}) => {
     return (
         <TouchableWithoutFeedback onPress={() => handleClick(item)}>
             <Image
