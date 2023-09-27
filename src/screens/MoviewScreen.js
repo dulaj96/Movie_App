@@ -14,6 +14,7 @@ import { styles, theme } from '../assets/theme/Index';
 import LinearGradient from 'react-native-linear-gradient';
 import Cast from '../component/Cast';
 import MovieList from '../component/MovieList';
+import Loading from '../component/Loading';
 
 const ios = Platform.OS == 'ios';
 const topMargin = ios ? '' : ' mt-3';
@@ -24,6 +25,7 @@ const MovieScreen = () => {
     const [isFavourite, toggleFavourite] = useState(false);
     const [cast, setCast] = useState([1, 2, 3, 4, 5]);
     const [similarMovies, setSimilarMovies] = useState([1, 2, 3, 4, 5]);
+    const [loading, setLoading] = useState(false);
     const navigation = useNavigation();
     let movieName = 'Ant-Man and the Wasp: Quantumania';
     useEffect(() => {
@@ -51,19 +53,26 @@ const MovieScreen = () => {
                     </TouchableOpacity>
                 </SafeAreaView>
 
-                <View>
-                    <Image
-                        source={require('../assets/Images/moviePoster2.png')}
-                        style={{ width, height: height * 0.55 }}
-                    />
-                    <LinearGradient
-                        colors={['transparent', 'rgba(23, 23, 23, 0.8)', 'rgba(23, 23, 23, 1)']}
-                        style={{ width, height: height * 0.40 }}
-                        start={{ x: 0.5, y: 0 }}
-                        end={{ x: 0.5, y: 1 }}
-                        className="absolute bottom-0"
-                    />
-                </View>
+                {
+                    loading ? (
+                        <Loading />
+                    ) : (
+                        <View>
+                            <Image
+                                source={require('../assets/Images/moviePoster2.png')}
+                                style={{ width, height: height * 0.55 }}
+                            />
+                            <LinearGradient
+                                colors={['transparent', 'rgba(23, 23, 23, 0.8)', 'rgba(23, 23, 23, 1)']}
+                                style={{ width, height: height * 0.40 }}
+                                start={{ x: 0.5, y: 0 }}
+                                end={{ x: 0.5, y: 1 }}
+                                className="absolute bottom-0"
+                            />
+                        </View>
+                    )
+                }
+
             </View>
 
             {/* movie details */}
